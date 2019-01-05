@@ -12,7 +12,7 @@ import top.tangshitai.excel.bean.POIResult;
 import top.tangshitai.excel.exception.POIException;
 import top.tangshitai.excel.utils.POIUtils;
 
-public class WorkBook {
+public class POIMain {
 	private SheetProcess sheetProcess = new SheetProcess();
 	public List<POIResult> analysisWorkBook(String prefix,String fileName,String[]... sheetConfig) throws POIException {
 		try {

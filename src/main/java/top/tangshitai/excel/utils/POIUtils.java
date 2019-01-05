@@ -7,11 +7,12 @@ import java.io.InputStream;
 
 import org.apache.commons.lang3.StringUtils;
 
-import top.tangshitai.excel.App;
 import top.tangshitai.excel.exception.POIException;
 
 public class POIUtils {
 	public static String path(String prefix,String filename) throws POIException {
+		if(StringUtils.isBlank(filename)) throw new POIException("文件名不能为空");
+		
 		if(!StringUtils.isBlank(prefix)) {
 			if(prefix.indexOf(prefix.length()-1)!='/') {
 				filename = prefix+"/"+filename;
@@ -19,13 +20,13 @@ public class POIUtils {
 				filename = prefix+filename;
 			}
 		}
-		java.net.URL url = App.class.getClassLoader().getResource(filename);
+		java.net.URL url = POIUtils.class.getClassLoader().getResource(filename);
 		if(url!=null) {
 			return url.getPath();
 		}
 		File absPathFile = new File(filename);
 		if(!absPathFile.exists())
-			throw new POIException("加载的配置文件不存在："+filename);
+			throw new POIException("加载的文件不存在："+filename);
 		return absPathFile.getAbsolutePath();
 	}
 	public static byte[] readToByte(InputStream inputStream) throws POIException{
