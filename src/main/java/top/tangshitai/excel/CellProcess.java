@@ -23,8 +23,9 @@ public class CellProcess {
 		}
 		return cellsContent;
 	}
-	private String getCellStrValue(Cell cell,FormulaEvaluator evaluator) throws POIException {
-		if(cell==null) throw new IllegalArgumentException("poi的cell对象不能为空");
+	public String getCellStrValue(Cell cell,FormulaEvaluator evaluator) throws POIException {
+		if(cell==null) throw new POIException("poi的Cell对象不能为空");
+		if(evaluator==null) throw new POIException("poi的FormulaEvaluator对象不能为空");
 		switch (cell.getCellType()) {
 		case _NONE://不存在类型
 			throw new POIException("poi的cell type不存在");
