@@ -22,8 +22,8 @@ public class POIMainTest{
 		try {
 			List<POIResult> result = workBook.analysisWorkBook(null, "test.xls",new String[]{"名字","年龄","地址","来源","婚配","结果","说明"});
 			for(POIResult en:result) {
-				for(String[] tmp:en.getData()) {
-					System.out.println(Arrays.toString(tmp));
+				for(int x=0;x<en.rowLength();x++) {
+					System.out.println(Arrays.toString(en.getRow(x)));
 				}
 				System.out.println("sheet名称："+en.getSheetName());
 			}

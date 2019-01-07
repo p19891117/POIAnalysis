@@ -12,7 +12,7 @@ public class RowProcess {
 	public POIResult analysisRow(String[] headParams,Sheet sheet,FormulaEvaluator evaluator) throws POIException {
 		if(headParams==null||headParams.length<=0) throw new POIException("excel的sheet["+sheet.getSheetName()+"]head没有配置");
 		int cellLength = headParams.length;//col长度
-		POIResult poiResult = new POIResult(sheet.getSheetName(),cellLength);
+		POIResult poiResult = new POIResult(sheet.getSheetName(),cellLength,headParams);
 		for(int rowIndex=0;rowIndex<sheet.getLastRowNum();rowIndex++) {
 			Row row = sheet.getRow(rowIndex);
 			String[] rowResult = cellProcess.analysisCell(cellLength, row, evaluator);
