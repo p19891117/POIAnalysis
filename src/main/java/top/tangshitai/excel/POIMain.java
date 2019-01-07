@@ -2,6 +2,7 @@ package top.tangshitai.excel;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -17,10 +18,7 @@ public class POIMain {
 	public List<POIResult> analysisWorkBook(String prefix,String fileName,String[]... sheetConfig) throws POIException {
 		try {
 			InputStream in = new FileInputStream(POIUtils.path(prefix,fileName));
-			ByteArrayInputStream byteIn = new ByteArrayInputStream(POIUtils.readToByte(in));
-			Workbook workbook = WorkbookFactory.create(byteIn);
-			List<POIResult> result = sheetProcess.analysisSheet(workbook, sheetConfig);
-			return result;
+			return analysisWorkBook(in,sheetConfig);
 		}catch (POIException e) {
 			throw e;
 		}catch (Exception e) {
@@ -30,8 +28,7 @@ public class POIMain {
 	}
 	public List<POIResult> analysisWorkBook(InputStream in,String[]... sheetConfig) throws POIException {
 		try {
-			ByteArrayInputStream byteIn = new ByteArrayInputStream(POIUtils.readToByte(in));
-			Workbook workbook = WorkbookFactory.create(byteIn);
+			Workbook workbook = workbook(in);
 			List<POIResult> result = sheetProcess.analysisSheet(workbook, sheetConfig);
 			return result;
 		}catch (POIException e) {
@@ -40,5 +37,16 @@ public class POIMain {
 			throw new POIException("解析excel出错",e);
 		}
 		
+	}
+	public Workbook workbook(InputStream in) throws POIException {
+		try {
+			ByteArrayInputStream byteIn = new ByteArrayInputStream(POIUtils.readToByte(in));
+			Workbook workbook = WorkbookFactory.create(byteIn);
+			return workbook;
+		}catch (POIException e) {
+			throw e;
+		}catch (Exception e) {
+			throw new POIException("创建POIException对象失败",e);
+		}
 	}
 }
