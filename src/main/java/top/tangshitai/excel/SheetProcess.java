@@ -14,7 +14,7 @@ public class SheetProcess {
 	private RowProcess rowProcess = new RowProcess();
 	public List<POIResult> analysisSheet(Workbook workbook ,String[][] sheetCfg) throws POIException {
 		List<POIResult> poirs = new ArrayList<>();
-		if(sheetCfg==null||sheetCfg.length<1) new POIException("excel的每个sheet的head没有配置");
+		if(sheetCfg==null||sheetCfg.length<=0) new POIException("excel的每个sheet的head没有配置");
 		FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
 		for(int sheetIndex=0;sheetIndex<workbook.getNumberOfSheets();sheetIndex++) {
 			Sheet sheet = workbook.getSheetAt(sheetIndex);

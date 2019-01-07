@@ -20,7 +20,7 @@ public class POIMainTest{
 	@Test
 	public void testAnalysisWorkBook() {
 		try {
-			List<POIResult> result = workBook.analysisWorkBook("/home/tst/Desktop/", "test.xls",new String[]{"名字","年龄","地址","来源","婚配","结果","说明"});
+			List<POIResult> result = workBook.analysisWorkBook(null, "test.xls",new String[]{"名字","年龄","地址","来源","婚配","结果","说明"});
 			for(POIResult en:result) {
 				for(String[] tmp:en.getData()) {
 					System.out.println(Arrays.toString(tmp));
