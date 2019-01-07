@@ -13,6 +13,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--<poi.version>4.0.1</poi.version>-->
+        <poi.version>3.15</poi.version>
 	</properties>
 
 	<dependencies>
@@ -22,21 +24,22 @@
 			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
-			<version>4.0.1</version>
-		</dependency>
+			<version>${poi.version}</version>
+		</dependency>-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.8.1</version>
 		</dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>4.0.1</version>
-        </dependency>
+
 	</dependencies>
 	    <build>
         <finalName>POIAnalysis1.0</finalName>

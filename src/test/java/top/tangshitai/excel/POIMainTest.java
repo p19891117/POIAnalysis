@@ -20,7 +20,7 @@ public class POIMainTest{
 	@Test
 	public void testAnalysisWorkBook() {
 		try {
-			List<POIResult> result = workBook.analysisWorkBook(null, "test.xls",new String[]{"名字","年龄","地址","来源","婚配","结果","说明"});
+			List<POIResult> result = workBook.analysisWorkBook(null, "src/test/resources/test.xls",new String[]{"名字","年龄","地址","来源","婚配","结果","说明"},new String[]{"1","2","3"});
 			for(POIResult en:result) {
 				for(int x=0;x<en.rowLength();x++) {
 					System.out.println(Arrays.toString(en.getRow(x)));
@@ -31,8 +31,21 @@ public class POIMainTest{
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+	@Test
+	public void testAnalysisWorkBook1() {
+		try {
+			List<POIResult> result = workBook.analysisWorkBook(null, "src/test/resources/person.xls",new String[]{"姓名","专家级别","专业"});
+			for(POIResult en:result) {
+				for(int x=0;x<en.rowLength();x++) {
+					System.out.println(Arrays.toString(en.getRow(x)));
+				}
+				System.out.println("sheet名称："+en.getSheetName());
+			}
+		}catch (POIException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@After
 	public void after() {
